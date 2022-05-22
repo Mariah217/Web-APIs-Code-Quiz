@@ -24,8 +24,25 @@ nav {
     color: blueviolet;
 }
 
+p {
+    text-align: center;
+}
+/*mutlipe choice question*/
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: x-large;
+}
+
+.question1 ul li {
+    text-align: center;
+    border: 2px solid blueviolet;
+    
+}
 /*title*/
 .title {
+    font-weight: 700;
     text-align: center;
     color: black;
     padding:  40px;
