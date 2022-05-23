@@ -10,4 +10,24 @@ step 8: create view highscore in top left to view highscore (use local storage)
 */
 
 //variables
-
+var startButton = document.querySelector(".start-button");
+var finalScore = "";
+var highscores = 0;
+var questions = [
+    {
+        question: "Commonly used data types DO NOT include: "
+        choices: ["strings", "booleans", "alerts", "numbers"]
+        answer: 2
+    }
+    {
+        question: "The condition of and if/else statement is enclosed with___."
+        choices: ["quotes", "curly brackets", "parenthesis", "square brackets"]
+        answer: 2
+    }
+    {
+        question: "Arrays in JavaScript can be used to store____."
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"]
+        answer: 3
+    }
+]
+// Start button

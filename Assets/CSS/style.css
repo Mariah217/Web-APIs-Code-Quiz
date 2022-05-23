@@ -47,15 +47,17 @@ ol, ul {
     list-style: none;
 }
 
-/*question 1 and answers*/
+/*question 1 answers*/
 .question1 ul li {
+    cursor: pointer;
+    font-size: 18px;
     border-radius: 10px;
     border: 2px solid blueviolet;
     background-color: blueviolet;
     color: white;
-    text-align: left;
     padding: 10px;
     margin-bottom: 10px;
+    margin-left:37%;
     max-width: 125px;
 }
 
