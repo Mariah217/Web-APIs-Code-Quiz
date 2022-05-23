@@ -11,23 +11,64 @@ step 8: create view highscore in top left to view highscore (use local storage)
 
 //variables
 var startButton = document.querySelector(".start-button");
+var choices = document.querySelector("#choices");
+var timer;
+var timerCount; 
+var isAllDone = false;
 var finalScore = "";
 var highscores = 0;
 var questions = [
+    //The first question will be [0]
     {
-        question: "Commonly used data types DO NOT include: "
-        choices: ["strings", "booleans", "alerts", "numbers"]
-        answer: 2
+        question: "Commonly used data types DO NOT include: ",
+        choiceA: "strings", 
+        choiceB: "booleans",
+        choiceC: "alerts",
+        choiceD: "numbers",
+        answer: "C"
     }
+    //The second question will be [1]
     {
-        question: "The condition of and if/else statement is enclosed with___."
-        choices: ["quotes", "curly brackets", "parenthesis", "square brackets"]
-        answer: 2
+        question: "The condition of and if/else statement is enclosed with___.",
+        choiceA: "quotes", 
+        choiceB: "curly brackets",
+        choiceC: "parenthesis",
+        choiceD: "square brackets",
+        answer: "C"
     }
+    //the third question will be [2]
     {
-        question: "Arrays in JavaScript can be used to store____."
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"]
-        answer: 3
+        question: "Arrays in JavaScript can be used to store____.",
+        choiceA: "numbers and strings", 
+        choiceB: "other arrays",
+        choiceC: "booleans",
+        choiceD: "all of the above",
+        answer: "D"
     }
 ]
 // Start button
+    function startGame() {
+        isAllDone = false;
+        timerCount = 75;
+        startButton.disabled = true;
+        startTimer()
+        console.log("hi")
+    }
+    
+    function startTimer() {
+        timer=setInterval(function() {
+            timerCount--;
+            timerElement.textContent = timerCount;
+            if (timerCount > 0) {
+                if (timerCount > 0){
+                    clearInterval(timer);
+                    isAllDone();
+                    console.log(isAllDone);
+                }
+            }
+            if (timerCount === 0){
+                clearInterval(timer);
+                isAllDone();
+            }
+        }, 1000);
+    }
