@@ -16,14 +16,8 @@ body {
 header {
    display: flex;
    justify-content: space-between;
-}
-
-
-/*nav link for highscores*/
- {
-    text-align: left;
-    margin-top: 20px;
-    color: blueviolet;
+   margin-top: 20px;
+   color: blueviolet
 }
 
 /*quiz rules*/
@@ -34,10 +28,11 @@ p {
 /*title*/
 h2 {
     text-align: center;
-    margin: 20px 0;
+    margin: 50px 0;
     font-weight: 600;
-    font-size: x-large;
+    font-size: 50px;
 }
+
 
 ul {
     list-style: none;
@@ -45,9 +40,6 @@ ul {
     justify-content: space-evenly;
 }
 
-/* .timer-display {
-    justify-content: flex-end;
-} */
 /*question 1 answers*/
 .question1 ul li {
     cursor: pointer;
@@ -62,26 +54,16 @@ ul {
     max-width: 125px;
 }
 
-/*title*/
-.title {
-    font-weight: 700;
-    text-align: center;
-    color: black;
-    padding:  40px;
-    font-size: 40px;
-}
-
-/*start button*/
+/*start button---need to figure out how to center this*/
 .start-button {
     background-color: blueviolet;
     border-radius: 10px;
     color: white;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 25px;
     letter-spacing: 2px;
     line-height: 16px;
     padding: 10px 20px;
-    text-align: center;
     margin-bottom: 20px;
 }
 
