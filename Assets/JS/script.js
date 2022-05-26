@@ -11,15 +11,17 @@ step 9: create view highscore in top left to view highscore (use local storage) 
 */
 
 //variables
-var questionsEl = document.querySelector(".questions");
+var questionsEl = document.querySelector(".questions-hide");
 var introductionEl = document.querySelector("#introduction");
-var startBtn = document.querySelector(".start-button");
-var choices = document.querySelector("#choices");
 var timerEl = document.querySelector("#timer");
-var timerCount; 
+var startBtn = document.querySelector(".start-button");
+var saveBtn = document.querySelector("#save");
+var choices = document.querySelector("#choices");
+var timerCount= 75; 
 var isAllDone = false;
 var finalScore = "";
 var highscores = 0;
+
 var questions = [
     //reference: 
     //questions.question[0]
@@ -59,7 +61,7 @@ var questions = [
 function startGame() {
     isAllDone = false;
     timerCount = 75;
-    startButtonEl.disabled = true;
+    startBtn.disabled = true;
     startTimer()
     introductionEl.classList.add("hide");
     questionsEl.classList.remove("hide");
@@ -71,7 +73,7 @@ function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         console.log(timerCount);
-        timerEl.textContent = timerCount;
+        timerCount.textContent = timerCount;
       
         if (timerCount === 0) {
             clearInterval(timer);
