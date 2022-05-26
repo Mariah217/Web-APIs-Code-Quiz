@@ -10,47 +10,35 @@
 </head>
 
 <body>
-    <!--title and start button-->
+    <!--highscore and time remaining-->
     <header>
-        <nav>
-            <ul>
-                <li><a href="highscores"> View Highscores</a></li>
-                <li>Time: </li>
-            </ul>
-        </nav>
-        <div class=title>Code Quiz Challenge!</div>
-        <button class="start-button">Start Quiz</button>
-
+        <span id="high-score">Highscore</span> <span id="Timer">Time Remaining:   </span>
     </header>
-    <!--questions/multiple choice answers-->
+    <!--title, start button and questions/multiple choice answers-->
     <main>
-        <p>Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect
-            answers will penalize your score time<br> by 10 seconds!
+        <section id="introduction">
+            <h2>Code Quiz Challenge!</h2>
+            <button class="start-button">Start Quiz</button>
+        </section>
+        <p>Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect answers will penalize your score time<br> by 10 seconds!
         </p>
         <section>
-            <section class="question1">
-                <div id="choices">
-                    <div class="choice" id="A" onclick="checkAnswer('A')">A </div>
-                    <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-                    <div class="choice" id="C" onclick="checkAnswer('C')">C </div>
-                    <div class="choice" id="D" onclick="checkAnswer('D')">D </div>
-                </div>
+            <section class="questions hide">
+                <ul id="choices">
+                    <li class="choice" id="A" onclick="checkAnswer('A')">A </li>
+                    <li class="choice" id="B" onclick="checkAnswer('B')">B</li>
+                    <li class="choice" id="C" onclick="checkAnswer('C')">C </li>
+                    <li class="choice" id="D" onclick="checkAnswer('D')">D </li>
+                </ul>
             </section>
         </section>
-        <!--timer-->
+        <!--high score and initial box-->
         <section>
-            <section class=" timer">
-                <div class="timer-text">
-                    <!-- <div class=" timer-count">time goes here</div> -->
-                    <!--I want timer in the top right corner????-->
-                </div>
+            <section class="input-initials">
+                <input type="text" id="enter-initials">
+                <button id="save">Save</button>
             </section>
-            <!--high score and initial box-->
-            <section>
-                <section class="highscores">
-                    <div class="text box"></div>
-                </section>
-            </section>
+        </section>
     </main>
     <script src="./Assets/JS/script.js"></script>
 </body>
