@@ -79,4 +79,13 @@ function displayQuestions(){
         answer4El.textContent=questions[index].answers[3];
 }
 
+function nextQuestion(){
+    index++
+    displayQuestions()
+}
+answer1El.addEventListener("click", nextQuestion);
+answer2El.addEventListener("click", nextQuestion);
+answer3El.addEventListener("click", nextQuestion);
+answer4El.addEventListener("click", nextQuestion);
+
 startBtn.addEventListener("click", startGame);
