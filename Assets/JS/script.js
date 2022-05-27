@@ -1,7 +1,7 @@
 /*
-step 1: display start page, title, paragraph and start button
-step 2: timer will start when start button is clicked
-step 3: create start button to start the game and timer, use addeventlistener, display question and 4 answer choices/buttons, start page is hidden, only display question page (after you select an answer, it will go to another page and hide previous question page)
+step 1: display start page, title, paragraph and start button ✔️
+step 2: timer will start when start button is clicked ✔️
+step 3: create start button to start the game and timer, use addeventlistener, display question and 4 answer choices/buttons, start page is hidden, only display question page (after you select an answer, it will go to another page and hide previous question page) ✔️
 step 4.: create if statement (if you answer question correctly, it will present another question and say "correct!")
 step 5: create if statement (if you answer question incorrectly, deduct 10 seconds from timer and say "incorrect")
 step 6: clear interval when all questions are answered (stop the clock)
@@ -26,57 +26,60 @@ var answer1El = document.querySelector("#answer1");
 var answer2El = document.querySelector("#answer2");
 var answer3El = document.querySelector("#answer3");
 var answer4El = document.querySelector("#answer4");
+var score = 0;
 var timeRemaining = 75;
 var index = 0;
-
-answer1El.addEventListener("click", nextQuestion);
-answer2El.addEventListener("click", nextQuestion);
-answer3El.addEventListener("click", nextQuestion);
-// answer4El.addEventListener("click",); //add function for input box
-
-startBtn.addEventListener("click", startGame);
-// highScoreEl.addEventListener("click", ) //complete after dashboard is complete
+var clockId
 
 
 
 var questions = [{
-    title: "Commonly used data types DO NOT include: ",
-    answers: ["Strings", "Booleans", "Alerts", "Numbers"],
+    prompt: "Commonly used data types DO NOT include: ",
+    answers: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
     solution: "2"
 },
 
 {
-    title: "The condition of an if/else statement is enclosed with___.",
-    answer: ["Quotes", "Curly brackets", "Parenthesis", "Square brackets"],
+    prompt: "The condition of an if/else statement is enclosed with___.",
+    answer: ["1. Quotes", "2. Curly brackets", "3. Parenthesis", "4. Square brackets"],
     solution: "2"
 },
 
 {
-    title: "Arrays in JavaScript can be used to store___.",
-    answer: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+    prompt: "Arrays in JavaScript can be used to store___.",
+    answer: ["1. Numbers and strings", "2. Other arrays", "3. Booleans", "4. All of the above"],
     solution: "3"
 },
 
 {
-    title: "question 4",
-    answer: ["answer1", "answer2", "answer3", "answer4"],
-    solution: "answer"
+    prompt: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answer: ["1. JavaScript", "2. Terminal/bash", "3. For loops", "4. Console.log"],
+    solution: "3"
 },
 
 {
-    title: "question 5",
-    answer: ["answer1", "answer2", "answer3", "answer4"],
-    solution: "answer"
+    prompt: "String values must be enclosed within___when being assigned to variables.",
+    answer: ["1. Commas", "2. Curly brackets", "3. Quotes", "4. Parenthesis"],
+    solution: "2"
 },
-
-
 ]
 
-//time remaining countdown
+// time remaining countdown
 function countDown() {
     timeEl.textContent = timeRemaining;
     timeRemaining--;
+    if (timeRemaining < 0) {
+        clearInterval(timeInterval);
+        document.getElementById("time").innerHTML = "";
+    }
 }
+
+//time remaining stops at 0
+var timeInterval=setInterval(function() {
+    if (timeRemaining === 0)
+    // timeEl.textContent = '' ;
+    clearInterval(timeInterval);
+})
 
 
 // Start button, sets clock
@@ -86,7 +89,6 @@ function startGame() {
     answersEl.classList.remove("hide");
     clockId = setInterval(countDown, 1000);
     displayQuestions();
-
 }
 
 function displayQuestions() {
@@ -95,7 +97,6 @@ function displayQuestions() {
     answer2El.textContent = questions[index].answers[1];
     answer3El.textContent = questions[index].answers[2];
     answer4El.textContent = questions[index].answers[3];
-
 }
 
 function nextQuestion() {
@@ -103,6 +104,17 @@ function nextQuestion() {
     displayQuestions();
 }
 
+
 // saveBtn.addEventListener('click', function handleClick() {
 //     inputInitialsEl += 'Appended text';
 //   });
+
+countDown();
+
+answer1El.addEventListener("click", nextQuestion);
+answer2El.addEventListener("click", nextQuestion);
+answer3El.addEventListener("click", nextQuestion);
+// answer4El.addEventListener("click",); //add function for input box
+
+startBtn.addEventListener("click", startGame);
+// highScoreEl.addEventListener("click", ) //complete after dashboard is complete

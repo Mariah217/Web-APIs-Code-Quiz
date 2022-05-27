@@ -60,6 +60,31 @@ h3 {
 #high-score:hover{
     cursor: pointer;
 }
-#answers {
+
+#answer1 {
     margin-top: 120px;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: white;
+}
+
+#answer2 {
+    margin-top: 10px;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: white;
+}
+
+#answer3 {
+    margin-top: 10px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+}
+
+#answer4 {
+    margin-top: 10px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
 }
