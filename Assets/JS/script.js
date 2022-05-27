@@ -16,47 +16,44 @@ var introductionEl = document.querySelector("#introduction");
 var timeEl = document.querySelector("#time");
 var startBtn = document.querySelector(".start-button");
 var saveBtn = document.querySelector("#save");
-var choices = document.querySelector("#choices");
 var dashboard = document.querySelector("#dashboard");
+var titleEl=document.querySelector("#title");
+var answer1El=document.querySelectorAll("#answer1");
+var answer2El=document.querySelectorAll("#answer2");
+var answer3El=document.querySelectorAll("#answer3");
+var answer4El=document.querySelectorAll("#answer4");
 var timeRemaining = 75 
-var isAllDone = false;
-var highscores = 0;
-var clockId
+var index=0;
 
-var questions = [
-    //reference: 
-    //questions.question[0]
-    //qustions.choiceA[0] etc
-    {
-        question: "Commonly used data types DO NOT include: ",
-        choiceA: "strings",
-        choiceB: "booleans",
-        choiceC: "alerts",
-        choiceD: "numbers",
-        answer: "C"
-    },
-    //reference: 
-    //questions.question[1]
-    //questions.choiceA[1] etc
-    {
-        question: "The condition of and if/else statement is enclosed with___.",
-        choiceA: "quotes",
-        choiceB: "curly brackets",
-        choiceC: "parenthesis",
-        choiceD: "square brackets",
-        answer: "C"
-    },
-    //reference: 
-    //questions.question[2]
-    //questions.choiceA[2] etc
-    {
-        question: "Arrays in JavaScript can be used to store____.",
-        choiceA: "numbers and strings",
-        choiceB: "other arrays",
-        choiceC: "booleans",
-        choiceD: "all of the above",
-        answer: "D"
-    },
+var questions = [ {
+    title: "question 1",
+    answers: ["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer"
+},
+
+{
+    title: "question 2",
+    answers: ["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer"
+},
+
+{
+    title: "question 3",
+    answers: ["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer"
+},
+
+{
+    title: "question 4",
+    answers: ["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer"
+},
+
+{
+    title: "question 5",
+    answers: ["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer"
+},
 ]
 
 //time remaining countdown
@@ -71,6 +68,15 @@ function startGame(){
     introductionEl.classList.add("hide");
     questionsEl.classList.remove("hide");
     clockId=setInterval(countDown, 1000);
+    displayQuestions()
+}
+
+function displayQuestions(){
+        titleEl.textContent=questions[index].title;
+        answer1El.textContent=questions[index].answers[0];
+        answer2El.textContent=questions[index].answers[1];
+        answer3El.textContent=questions[index].answers[2];
+        answer4El.textContent=questions[index].answers[3];
 }
 
 startBtn.addEventListener("click", startGame);
