@@ -11,19 +11,33 @@ step 9: create view highscore in top left to view highscore (use local storage) 
 */
 
 //variables
-var questionsEl = document.querySelector(".questions");
+var highScoreEl=document.querySelector("#high-score");
+var questionEl=document.querySelector("#question");
+var questionContainerEL=document.querySelector("#question-container");
+var answersEl = document.querySelector("#answers");
 var introductionEl = document.querySelector("#introduction");
 var timeEl = document.querySelector("#time");
 var startBtn = document.querySelector(".start-button");
 var saveBtn = document.querySelector("#save");
-var dashboard = document.querySelector("#dashboard");
+var inputInitialsEl=document.querySelector("#input-intials");
+var dashboardEl = document.querySelector("#dashboard");
 var titleEl=document.querySelector("#title");
-var answer1El=document.querySelectorAll("#answer1");
-var answer2El=document.querySelectorAll("#answer2");
-var answer3El=document.querySelectorAll("#answer3");
-var answer4El=document.querySelectorAll("#answer4");
-var timeRemaining = 75 
+var answer1El=document.querySelector("#answer1");
+var answer2El=document.querySelector("#answer2");
+var answer3El=document.querySelector("#answer3");
+var answer4El=document.querySelector("#answer4");
+var timeRemaining = 75; 
 var index=0;
+
+answer1El.addEventListener("click", nextQuestion);
+answer2El.addEventListener("click", nextQuestion);
+answer3El.addEventListener("click", nextQuestion);
+answer4El.addEventListener("click", nextQuestion);
+
+startBtn.addEventListener("click", startGame);
+// highScoreEl.addEventListener("click", ) //complete after scoreboard is complete
+
+
 
 var questions = [ {
     title: "question 1",
@@ -33,46 +47,48 @@ var questions = [ {
 
 {
     title: "question 2",
-    answers: ["answer1", "answer2", "answer3", "answer4"],
+    answer: ["answer1", "answer2", "answer3", "answer4"],
     solution: "answer"
 },
 
 {
     title: "question 3",
-    answers: ["answer1", "answer2", "answer3", "answer4"],
+    answer: ["answer1", "answer2", "answer3", "answer4"],
     solution: "answer"
 },
 
 {
     title: "question 4",
-    answers: ["answer1", "answer2", "answer3", "answer4"],
+    answer: ["answer1", "answer2", "answer3", "answer4"],
     solution: "answer"
 },
 
 {
     title: "question 5",
-    answers: ["answer1", "answer2", "answer3", "answer4"],
+    answer: ["answer1", "answer2", "answer3", "answer4"],
     solution: "answer"
 },
 ]
 
 //time remaining countdown
 function countDown(){
-    timeEl.textContent=timeRemaining
-    timeRemaining--
+    timeEl.textContent=timeRemaining;
+    timeRemaining--;
 }
 
 
 // Start button, sets clock
 function startGame(){
     introductionEl.classList.add("hide");
-    questionsEl.classList.remove("hide");
+    questionContainerEL.classList.remove("hide");
+    answersEl.classList.remove("hide");
     clockId=setInterval(countDown, 1000);
-    displayQuestions()
+    displayQuestions();
+
 }
 
 function displayQuestions(){
-        titleEl.textContent=questions[index].title;
+        questionEl.textContent=questions[index].title;
         answer1El.textContent=questions[index].answers[0];
         answer2El.textContent=questions[index].answers[1];
         answer3El.textContent=questions[index].answers[2];
@@ -80,12 +96,6 @@ function displayQuestions(){
 }
 
 function nextQuestion(){
-    index++
-    displayQuestions()
+    index++;
+    displayQuestions();
 }
-answer1El.addEventListener("click", nextQuestion);
-answer2El.addEventListener("click", nextQuestion);
-answer3El.addEventListener("click", nextQuestion);
-answer4El.addEventListener("click", nextQuestion);
-
-startBtn.addEventListener("click", startGame);
