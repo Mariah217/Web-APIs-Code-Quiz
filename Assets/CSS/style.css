@@ -33,6 +33,7 @@ h2 {
     font-size: 50px;
 }
 
+/*center questions&answers*/
 ul li {
     display: flex;
     align-items: center;
@@ -57,15 +58,23 @@ ul li {
     border-radius: 10px;
     font-size: 25px;
     letter-spacing: 2px;
-    margin-bottom: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: auto;
 }
 
 .hide {
     display: none;
 }
 
+/*intials box*/
 .input-initials-hide {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+}
+
+#timer {
+
 }
