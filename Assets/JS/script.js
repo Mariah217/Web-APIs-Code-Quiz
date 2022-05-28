@@ -12,91 +12,87 @@ step 9: create view highscore in top left to view highscore (use local storage) 
 
 //variables
 var highScoreEl = document.querySelector("#high-score");
-var questionEl = document.querySelector("#question");
-var questionContainerEL = document.querySelector("#question-container");
-var answersEl = document.querySelector("#answers");
-var introductionEl = document.querySelector("#introduction");
 var timeEl = document.querySelector("#time");
-var startBtn = document.querySelector(".start-button");
-var saveBtn = document.querySelector("#save");
-var inputInitialsEl = document.querySelector("#input-intials");
-var dashboardEl = document.querySelector("#dashboard");
+var introductionEl = document.querySelector("#introduction");
 var titleEl = document.querySelector("#title");
+var startBtn = document.querySelector(".start-button");
+var questionContainerEL = document.querySelector("#question-container");
+var questionEl = document.querySelector("#question");
+var answersEl = document.querySelector("#answers");
 var answer1El = document.querySelector("#answer1");
 var answer2El = document.querySelector("#answer2");
 var answer3El = document.querySelector("#answer3");
 var answer4El = document.querySelector("#answer4");
+var inputInitialsEl = document.querySelector("#input-intials");
+var saveBtn = document.querySelector("#save");
+var dashboardEl = document.querySelector("#dashboard");
 var score = 0;
 var timeRemaining = 75;
 var index = 0;
 var clockId
 
 
-
 var questions = [{
-    prompt: "Commonly used data types DO NOT include: ",
-    answers: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
+    title: "Commonly used data types DO NOT include: ",
+    answer: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
     solution: "2"
 },
 
 {
-    prompt: "The condition of an if/else statement is enclosed with___.",
+    title: "The condition of an if/else statement is enclosed with___.",
     answer: ["1. Quotes", "2. Curly brackets", "3. Parenthesis", "4. Square brackets"],
     solution: "2"
 },
 
 {
-    prompt: "Arrays in JavaScript can be used to store___.",
+    title: "Arrays in JavaScript can be used to store___.",
     answer: ["1. Numbers and strings", "2. Other arrays", "3. Booleans", "4. All of the above"],
     solution: "3"
 },
 
 {
-    prompt: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    title: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answer: ["1. JavaScript", "2. Terminal/bash", "3. For loops", "4. Console.log"],
     solution: "3"
 },
 
 {
-    prompt: "String values must be enclosed within___when being assigned to variables.",
+    title: "String values must be enclosed within___when being assigned to variables.",
     answer: ["1. Commas", "2. Curly brackets", "3. Quotes", "4. Parenthesis"],
     solution: "2"
 },
 ]
-
-// time remaining countdown
-function countDown() {
-    timeEl.textContent = timeRemaining;
-    timeRemaining--;
-    if (timeRemaining < 0) {
-        clearInterval(timeInterval);
-        document.getElementById("time").innerHTML = "";
-    }
-}
-
-//time remaining stops at 0
-var timeInterval=setInterval(function() {
-    if (timeRemaining === 0)
-    // timeEl.textContent = '' ;
-    clearInterval(timeInterval);
-})
-
 
 // Start button, sets clock
 function startGame() {
     introductionEl.classList.add("hide");
     questionContainerEL.classList.remove("hide");
     answersEl.classList.remove("hide");
-    clockId = setInterval(countDown, 1000);
+    var timeInterval=setInterval(function() { 
+    timeRemaining--;
+    timeEl.textContent="time: " + timeRemaining;
+    if (timeRemaining <= 0){
+        clearInterval(timeInterval);
+        // gameOver(); //need to create function for this 
+    }
+    }, 1000);
+
     displayQuestions();
+    checkAnswer();
+    
 }
+
 
 function displayQuestions() {
     questionEl.textContent = questions[index].title;
-    answer1El.textContent = questions[index].answers[0];
-    answer2El.textContent = questions[index].answers[1];
-    answer3El.textContent = questions[index].answers[2];
-    answer4El.textContent = questions[index].answers[3];
+    answer1El.textContent = questions[index].answer[0];
+    answer2El.textContent = questions[index].answer[1];
+    answer3El.textContent = questions[index].answer[2];
+    answer4El.textContent = questions[index].answer[3];
+}
+
+function checkAnswer(){
+
 }
 
 function nextQuestion() {
@@ -104,17 +100,14 @@ function nextQuestion() {
     displayQuestions();
 }
 
-
 // saveBtn.addEventListener('click', function handleClick() {
 //     inputInitialsEl += 'Appended text';
 //   });
 
-countDown();
-
-answer1El.addEventListener("click", nextQuestion);
-answer2El.addEventListener("click", nextQuestion);
-answer3El.addEventListener("click", nextQuestion);
-// answer4El.addEventListener("click",); //add function for input box
+answer1El.addEventListener("click", checkAnswer);
+answer2El.addEventListener("click", checkAnswer);
+answer3El.addEventListener("click", checkAnswer);
+answer4El.addEventListener("click", checkAnswer);
 
 startBtn.addEventListener("click", startGame);
 // highScoreEl.addEventListener("click", ) //complete after dashboard is complete
