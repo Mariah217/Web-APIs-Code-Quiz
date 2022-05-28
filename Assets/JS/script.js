@@ -28,6 +28,7 @@ var inputInitialsEl = document.querySelector("#input-intials");
 var saveBtn = document.querySelector("#save");
 var scoreBoard = document.querySelector("#scoreboard");
 var score = 0;
+var total = 5;
 var timeRemaining = 75;
 var index = 0;
 var clockId
@@ -75,7 +76,7 @@ function startGame() {
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
             // gameOver(); //need to create function for this 
-        }
+        } 
     }, 1000);
 
     displayQuestions();
@@ -89,6 +90,7 @@ function displayQuestions() {
     answer4El.textContent = questions[index].answer[3];
 }
 
+
 function checkAnswer(event) {
     var correctAnswer = questions[index].solution;
     var userChoice = event.target.innerHTML;
@@ -100,7 +102,7 @@ function checkAnswer(event) {
         gameFeedbackEl.innerHTML="Incorrect";
         gameFeedbackEl.classList.remove("hide");
         timeRemaining -= 10;
-    }
+    } 
     nextQuestion();
 }
 

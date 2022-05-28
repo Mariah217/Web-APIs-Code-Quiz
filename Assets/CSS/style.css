@@ -7,7 +7,9 @@ body {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 /*high score and time remaining*/
@@ -16,6 +18,11 @@ header {
    justify-content: space-between;
    margin: 20px 50px;
    color: blueviolet
+}
+
+/*removed bullet points from li*/
+ul li {
+    list-style: none;
 }
 
 /*quiz rules*/
@@ -31,6 +38,7 @@ h2 {
     font-size: 50px;
 }
 
+/*questions*/
 h3 {
     font-size: 30px;
 }
@@ -62,7 +70,7 @@ h3 {
 }
 
 #answer1 {
-    margin-top: 120px;
+    margin-top: 45px;
     background-color: blueviolet;
     border-radius: 5px;
     color: white;
