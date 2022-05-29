@@ -81,7 +81,9 @@ function startGame() {
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
         } 
+      
     }, 1000);
+    
     displayQuestions();
 }
 
@@ -121,7 +123,6 @@ function saveHighScore(){
 
 var finalScores = localStorage.getItem("high-score");
 
-/*pulling high score and initials from local storage*/
 function highScoreClicked(){
     gameOverEl.classList.add("hide");
     scoreBoardEl.classList.remove("hide");
@@ -142,7 +143,6 @@ function checkAnswer(event) {
         gameFeedbackEl.classList.remove("hide");
         timeRemaining -= 10;
     } 
-
     nextQuestion();
 }
 
@@ -151,7 +151,6 @@ function nextQuestion() {
     index++;
     displayQuestions();
 }
-
 
 answer1El.addEventListener("click", checkAnswer);
 answer2El.addEventListener("click", checkAnswer);
