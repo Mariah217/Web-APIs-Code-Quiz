@@ -7,12 +7,12 @@ step 5: create if statement (if you answer question incorrectly, deduct 10 secon
 step 6: clear interval when all questions are answered (stop the clock)✔️
 step 7: when game is over "all done! your final score is ____." the time remaining on the clock is your final score.✔️
 step 8: create input textbox to insert initials at the end of the game✔️
-step 9: create view highscore in top left to view highscore (use local storage) show dashboard of all the highscores. When you click submit, should store initial and score in local storage.
+step 9: create view highscore in top left to view highscore (use local storage) show dashboard of my highscore. When you click save, should store initial and score in local storage.
 
 fix bug for timer starting late
 */
 
-//variables
+//global variables
 var highScoreEl = document.querySelector("#high-score");
 var timeEl = document.querySelector("#time");
 var introductionEl = document.querySelector("#introduction");
@@ -28,13 +28,15 @@ var answer4El = document.querySelector("#answer4");
 var gameFeedbackEl=document.querySelector("#feedback");
 var inputInitialsEl = document.querySelector("#input-initials");
 var saveBtn = document.querySelector("#save");
-var scoreBoard = document.querySelector("#scoreboard");
+var scoreBoardEl = document.querySelector("#scoreboard");
 var finalScoreEL=document.querySelector("#final-score");
 var timeRemaining = 75;
 var index = 0;
 var clockId
 var timeInterval
 var gameOverEl=document.querySelector("#game-over");
+var InitialScoreEl=document.querySelector("initial-score");
+
 
 
 var questions = [{
@@ -79,12 +81,11 @@ function startGame() {
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
         } 
-      
     }, 1000);
-    
     displayQuestions();
 }
 
+//displays questions and answers, clock stops when last question is answered and game is over
 function displayQuestions() {
     if (questions[index]){
         questionEl.textContent = questions[index].title;
@@ -99,6 +100,7 @@ function displayQuestions() {
         } 
 }
 
+//hides all questions and answers, shows All Done and final score
 function gameOver(){
     questionEl.classList.add("hide");
     answer1El.classList.add("hide");
@@ -110,20 +112,24 @@ function gameOver(){
     finalScoreEL.innerHTML=timeRemaining;
 }
 
+//save initials for input box and high score into local storage
 function saveHighScore(){
     document.getElementById("initials").value;
     var initials=document.getElementById("initials").value;
     localStorage.setItem("high-score", JSON.stringify({initials: initials, highscore: timeRemaining}));
-    /*
-    take info from local storage and put into scoreboard*/
 }
 
+var finalScores = localStorage.getItem("high-score");
+
+/*pulling high score and initials from local storage*/
 function highScoreClicked(){
-    /*hide questions section
-    hide game over screen
-    show high score page*/
+    gameOverEl.classList.add("hide");
+    scoreBoardEl.classList.remove("hide");
+    document.getElementById("initial-score").innerHTML= finalScores;
+    /*pull highscores from local storage*/
 }
 
+//checks answers to see if they are correct or incorrect
 function checkAnswer(event) {
     var correctAnswer = questions[index].solution;
     var userChoice = event.target.innerHTML;
@@ -140,19 +146,16 @@ function checkAnswer(event) {
     nextQuestion();
 }
 
+//goes to next question
 function nextQuestion() {
     index++;
     displayQuestions();
 }
 
-// saveBtn.addEventListener('click', function handleClick() {
-//     inputInitialsEl += 'Appended text';
-//   });
 
 answer1El.addEventListener("click", checkAnswer);
 answer2El.addEventListener("click", checkAnswer);
 answer3El.addEventListener("click", checkAnswer);
 answer4El.addEventListener("click", checkAnswer);
-
 startBtn.addEventListener("click", startGame);
-// highScoreEl.addEventListener("click", ) //complete after dashboard is complete
+saveBtn.addEventListener("click", highScoreClicked);
