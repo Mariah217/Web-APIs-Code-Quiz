@@ -12,7 +12,7 @@
 <body>
     <!--highscore and time remaining-->
     <header>
-        <span id="high-score">High Score</span> <span>Time Remaining: <span id="time"></span></span>
+        <span onclick="highScoreClicked()" id="high-score">High Score</span> <span>Time Remaining: <span id="time"></span></span>
     </header>
     <!--title, start button and questions/multiple choice answers-->
     <main>
@@ -43,10 +43,10 @@
                 <p>All Done!</p>
                 <p>Your final score is: <span id="final-score"></span></p>
                 <!--high score and initial box-->
-                <section id="input-initials" class="hide">
+                <section id="input-initials">
                     <p>Input Initials: </p>
-                    <input type="text" id="enter-initials" placeholder="MRJ">
-                    <button id="save">Save</button>
+                    <input type="text" id="initials" placeholder="MRJ">
+                    <button id="save" onclick="saveHighScore()">Save</button>
                 </section>
             </section>
 

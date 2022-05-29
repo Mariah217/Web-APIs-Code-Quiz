@@ -108,9 +108,21 @@ function gameOver(){
     gameFeedbackEl.classList.add("hide");
     gameOverEl.classList.remove("hide");
     finalScoreEL.innerHTML=timeRemaining;
-    inputInitialsEl.classList.remove("hide");
 }
 
+function saveHighScore(){
+    document.getElementById("initials").value;
+    var initials=document.getElementById("initials").value;
+    localStorage.setItem("high-score", JSON.stringify({initials: initials, highscore: timeRemaining}));
+    /*
+    take info from local storage and put into scoreboard*/
+}
+
+function highScoreClicked(){
+    /*hide questions section
+    hide game over screen
+    show high score page*/
+}
 
 function checkAnswer(event) {
     var correctAnswer = questions[index].solution;
