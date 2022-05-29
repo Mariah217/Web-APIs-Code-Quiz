@@ -28,6 +28,7 @@ ul li {
 /*quiz rules*/
 p {
     text-align: center;
+    margin-bottom: 50px;
 }
 
 /*title*/
@@ -50,8 +51,6 @@ h3 {
     border-radius: 10px;
     font-size: 25px;
     letter-spacing: 2px;
-    width: 200px;
-    padding: auto;
 }
 
 /*hide for questions, answers, input and dashboard*/

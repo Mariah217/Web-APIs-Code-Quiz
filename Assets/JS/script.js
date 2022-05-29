@@ -4,8 +4,8 @@ step 2: timer will start when start button is clicked ✔️
 step 3: create start button to start the game and timer, use addeventlistener, display question and 4 answer choices/buttons, start page is hidden, only display question page (after you select an answer, it will go to another page and hide previous question page) ✔️
 step 4.: create if statement (if you answer question correctly, it will present another question and say "correct!")✔️
 step 5: create if statement (if you answer question incorrectly, deduct 10 seconds from timer and say "incorrect")✔️
-step 6: clear interval when all questions are answered (stop the clock)
-step 7: when game is over "all done! your final score is ____." the time remaining on the clock is your final score.
+step 6: clear interval when all questions are answered (stop the clock)✔️
+step 7: when game is over "all done! your final score is ____." the time remaining on the clock is your final score.✔️
 step 8: create input textbox to insert initials at the end of the game
 step 9: create view highscore in top left to view highscore (use local storage) show dashboard of all the highscores. When you click submit, should store initial and score in local storage.
 */
@@ -27,11 +27,12 @@ var gameFeedbackEl=document.querySelector("#feedback");
 var inputInitialsEl = document.querySelector("#input-intials");
 var saveBtn = document.querySelector("#save");
 var scoreBoard = document.querySelector("#scoreboard");
-var score = 0;
-var total = 5;
+var finalScoreEL=document.querySelector("#final-score");
 var timeRemaining = 75;
 var index = 0;
 var clockId
+var timeInterval
+var gameOverEl=document.querySelector("#game-over");
 
 
 var questions = [{
@@ -61,7 +62,7 @@ var questions = [{
 {
     title: "String values must be enclosed within___when being assigned to variables.",
     answer: ["1. Commas", "2. Curly brackets", "3. Quotes", "4. Parenthesis"],
-    solution: "2"
+    solution: "3. Quotes"
 },
 ]
 
@@ -70,26 +71,42 @@ function startGame() {
     introductionEl.classList.add("hide");
     questionContainerEL.classList.remove("hide");
     answersEl.classList.remove("hide");
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         timeRemaining--;
         timeEl.textContent = "time: " + timeRemaining;
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
-            // gameOver(); //need to create function for this 
         } 
+      
     }, 1000);
-
+    
     displayQuestions();
 }
 
 function displayQuestions() {
-    questionEl.textContent = questions[index].title;
-    answer1El.textContent = questions[index].answer[0];
-    answer2El.textContent = questions[index].answer[1];
-    answer3El.textContent = questions[index].answer[2];
-    answer4El.textContent = questions[index].answer[3];
+    if (questions[index]){
+        questionEl.textContent = questions[index].title;
+        answer1El.textContent = questions[index].answer[0];
+        answer2El.textContent = questions[index].answer[1];
+        answer3El.textContent = questions[index].answer[2];
+        answer4El.textContent = questions[index].answer[3];
+    }
+        if (index===5){
+            clearInterval(timeInterval);
+            gameOver();
+        } 
 }
 
+function gameOver(){
+    questionEl.classList.add("hide");
+    answer1El.classList.add("hide");
+    answer2El.classList.add("hide");
+    answer3El.classList.add("hide");
+    answer4El.classList.add("hide");
+    gameFeedbackEl.classList.add("hide");
+    gameOverEl.classList.remove("hide");
+    finalScoreEL.innerHTML=timeRemaining;
+}
 
 function checkAnswer(event) {
     var correctAnswer = questions[index].solution;
@@ -103,6 +120,7 @@ function checkAnswer(event) {
         gameFeedbackEl.classList.remove("hide");
         timeRemaining -= 10;
     } 
+
     nextQuestion();
 }
 
