@@ -6,8 +6,10 @@ step 4.: create if statement (if you answer question correctly, it will present 
 step 5: create if statement (if you answer question incorrectly, deduct 10 seconds from timer and say "incorrect")✔️
 step 6: clear interval when all questions are answered (stop the clock)✔️
 step 7: when game is over "all done! your final score is ____." the time remaining on the clock is your final score.✔️
-step 8: create input textbox to insert initials at the end of the game
+step 8: create input textbox to insert initials at the end of the game✔️
 step 9: create view highscore in top left to view highscore (use local storage) show dashboard of all the highscores. When you click submit, should store initial and score in local storage.
+
+fix bug for timer starting late
 */
 
 //variables
@@ -24,7 +26,7 @@ var answer2El = document.querySelector("#answer2");
 var answer3El = document.querySelector("#answer3");
 var answer4El = document.querySelector("#answer4");
 var gameFeedbackEl=document.querySelector("#feedback");
-var inputInitialsEl = document.querySelector("#input-intials");
+var inputInitialsEl = document.querySelector("#input-initials");
 var saveBtn = document.querySelector("#save");
 var scoreBoard = document.querySelector("#scoreboard");
 var finalScoreEL=document.querySelector("#final-score");
@@ -106,7 +108,9 @@ function gameOver(){
     gameFeedbackEl.classList.add("hide");
     gameOverEl.classList.remove("hide");
     finalScoreEL.innerHTML=timeRemaining;
+    inputInitialsEl.classList.remove("hide");
 }
+
 
 function checkAnswer(event) {
     var correctAnswer = questions[index].solution;
