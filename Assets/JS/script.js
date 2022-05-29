@@ -75,7 +75,7 @@ function startGame() {
     answersEl.classList.remove("hide");
     timeInterval = setInterval(function () {
         timeRemaining--;
-        timeEl.textContent = "time: " + timeRemaining;
+        timeEl.textContent = timeRemaining;
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
         } 

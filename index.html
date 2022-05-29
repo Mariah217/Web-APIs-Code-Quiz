@@ -21,9 +21,9 @@
             <p>Try to answer the following code-related questions within the time <br> limit. Keep in mind that
                 incorrect
                 answers will penalize your score time <br> by 10 seconds!</p>
-
             <button class="start-button">Start Quiz</button>
         </section>
+
         <section>
             <section id="question-container" class="hide">
                 <h3 id="question">Question 1 placeholder</h3>
@@ -40,12 +40,12 @@
             </section>
 
             <section id="game-over" class="hide">
-                <p>All Done!</p>
+                <p id="all-done"><strong>All Done!</strong></p>
                 <p>Your final score is: <span id="final-score"></span></p>
                 <!--high score and initial box-->
                 <section id="input-initials">
                     <p>Input Initials: </p>
-                    <input type="text" id="initials" placeholder="MRJ">
+                    <input type="text" id="initials" placeholder="initials">
                     <button id="save" onclick="saveHighScore()">Save</button>
                 </section>
             </section>

@@ -75,23 +75,19 @@ h3 {
     color: white;
 }
 
-#answer2 {
+#answer2, #answer3, #answer4 {
     margin-top: 10px;
     background-color: blueviolet;
     border-radius: 5px;
     color: white;
 }
 
-#answer3 {
-    margin-top: 10px;
-    background-color: blueviolet;
-    color: white;
-    border-radius: 5px;
+/*all done font size*/
+#all-done {
+    font-size: 40px;
 }
 
-#answer4 {
-    margin-top: 10px;
-    background-color: blueviolet;
-    color: white;
-    border-radius: 5px;
+/*input initials margin*/
+#input-initials p {
+    margin-bottom: 10px;
 }
