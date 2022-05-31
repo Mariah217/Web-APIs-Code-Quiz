@@ -43,6 +43,7 @@ h2 {
 h3 {
     font-size: 30px;
 }
+
 /*start button---need to figure out how to center this*/
 .start-button {
     background-color: blueviolet;
@@ -71,11 +72,11 @@ h3 {
 #high-score:hover{
     cursor: pointer;
     color: blue;
-
 }
 
 /*button styles for answers*/
 #answer1 {
+    cursor: pointer;
     margin-top: 45px;
     background-color: blueviolet;
     border-radius: 5px;
@@ -83,6 +84,7 @@ h3 {
 }
 
 #answer2, #answer3, #answer4 {
+    cursor: pointer;
     margin-top: 10px;
     background-color: blueviolet;
     border-radius: 5px;
@@ -97,4 +99,8 @@ h3 {
 /*input initials margin*/
 #input-initials p {
     margin-bottom: 10px;
+}
+
+#save:hover{
+    cursor: pointer;
 }
