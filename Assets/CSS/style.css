@@ -53,6 +53,10 @@ h3 {
     letter-spacing: 2px;
 }
 
+.start-button:hover{
+    opacity: 75%;
+}
+
 /*hide for questions, answers, input and dashboard*/
 .hide {
     display: none;
@@ -66,6 +70,8 @@ h3 {
 /*high score hover/pointer*/
 #high-score:hover{
     cursor: pointer;
+    color: blue;
+
 }
 
 /*button styles for answers*/

@@ -82,9 +82,7 @@ function startGame() {
         if (timeRemaining <= 0) {
             clearInterval(timeInterval);
         } 
-      
     }, 1000);
-    
     displayQuestions();
 }
 
@@ -115,14 +113,14 @@ function gameOver(){
     finalScoreEL.innerHTML=timeRemaining;
 }
 
-//save initials for input box and high score into local storage
+//save initials from input box and high score into local storage
 function saveHighScore(){
     document.getElementById("initials").value;
     var initials=document.getElementById("initials").value;
     localStorage.setItem("high-score", JSON.stringify({initials: initials, highscore: timeRemaining}));
 }
 
-//pull high-score from local storage and put on scoreboard
+//pulls high-score from local storage and puts on scoreboard
 function highScoreClicked(){
     gameOverEl.classList.add("hide");
     scoreBoardEl.classList.remove("hide");
