@@ -7,9 +7,9 @@ step 5: create if statement (if you answer question incorrectly, deduct 10 secon
 step 6: clear interval when all questions are answered (stop the clock)✔️
 step 7: when game is over "all done! your final score is ____." the time remaining on the clock is your final score.✔️
 step 8: create input textbox to insert initials at the end of the game✔️
-step 9: create view highscore in top left to view highscore (use local storage) show dashboard of my highscore. When you click save, should store initial and score in local storage.
+step 9: create view highscore in top left to view highscore (use local storage) show dashboard of my highscore. When you click save, should store initial and score in local storage. ✔️
 
-fix bug for timer starting late
+fix bug for timer starting late✔️
 */
 
 //global variables
@@ -75,6 +75,7 @@ function startGame() {
     introductionEl.classList.add("hide");
     questionContainerEL.classList.remove("hide");
     answersEl.classList.remove("hide");
+    timeEl.textContent = timeRemaining;
     timeInterval = setInterval(function () {
         timeRemaining--;
         timeEl.textContent = timeRemaining;
@@ -121,13 +122,12 @@ function saveHighScore(){
     localStorage.setItem("high-score", JSON.stringify({initials: initials, highscore: timeRemaining}));
 }
 
-var finalScores = localStorage.getItem("high-score");
-
+//pull high-score from local storage and put on scoreboard
 function highScoreClicked(){
     gameOverEl.classList.add("hide");
     scoreBoardEl.classList.remove("hide");
-    document.getElementById("initial-score").innerHTML= finalScores;
-    /*pull highscores from local storage*/
+    var localStorageScores = JSON.parse(localStorage.getItem("high-score"));
+    document.getElementById("initial-score").innerHTML= localStorageScores.initials + "-" + localStorageScores.highscore;
 }
 
 //checks answers to see if they are correct or incorrect
